@@ -3,9 +3,772 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Violence Against Tunisian Women - Comprehensive Resource</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        :root {
+            --primary: #8b0000;
+            --primary-light: #c40000;
+            --secondary: #2c3e50;
+            --accent: #e74c3c;
+            --light: #f9f9f9;
+            --dark: #333;
+            --gray: #777;
+            --light-gray: #f0f0f0;
+            --highlight: #fff5f5;
+        }
+        
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        /* Header Styles */
+        header {
+            background: linear-gradient(to right, var(--primary), var(--primary-light));
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo i {
+            margin-right: 10px;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 1.5rem;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+        
+        nav ul li a:hover, nav ul li a.active {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%2Fid%2FOIP.k7M9S6GCepviSyG6Iu6TWgHaE7%3Fpid%3DApi&f=1&ipt=690cc52c38b39588d866e48f8ec18227b418fe3c758020a4f498cf6d0f9724b9&ipo=images');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--accent);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: #c0392b;
+        }
+        
+        /* Main Content Styles */
+        main {
+            padding: 2rem 0;
+        }
+        
+        .section {
+            display: none;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .section.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        h1 {
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            border-bottom: 2px solid var(--light-gray);
+            padding-bottom: 0.5rem;
+        }
+        
+        h2 {
+            color: var(--secondary);
+            margin: 1.5rem 0 1rem;
+        }
+        
+        h3 {
+            color: var(--primary-light);
+            margin: 1.2rem 0 0.8rem;
+        }
+        
+        p {
+            margin-bottom: 1rem;
+        }
+        
+        .highlight {
+            background-color: var(--highlight);
+            padding: 1rem;
+            border-left: 4px solid var(--primary-light);
+            margin: 1.5rem 0;
+        }
+        
+        ul {
+            margin-left: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        li {
+            margin-bottom: 0.5rem;
+        }
+        
+        /* Stats and Comparison Styles */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .stat-card {
+            background-color: var(--highlight);
+            padding: 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-light);
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-label {
+            font-size: 1rem;
+            color: var(--gray);
+        }
+        
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+        }
+        
+        .comparison-table th, .comparison-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid var(--light-gray);
+        }
+        
+        .comparison-table th {
+            background-color: var(--light-gray);
+            font-weight: 600;
+        }
+        
+        .comparison-table tr:hover {
+            background-color: #f9f9f9;
+        }
+        
+        /* Resource Cards */
+        .resource-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .resource-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        
+        .resource-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .card-header {
+            background-color: var(--secondary);
+            color: white;
+            padding: 1rem;
+            text-align: center;
+        }
+        
+        .card-body {
+            padding: 1.5rem;
+        }
+        
+        .card-body ul {
+            margin-left: 0;
+            list-style-type: none;
+        }
+        
+        .card-body li {
+            margin-bottom: 0.8rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+        
+        .card-body li:before {
+            content: "•";
+            color: var(--primary-light);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+        
+        .contact-info {
+            background-color: var(--highlight);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+            text-align: center;
+        }
+        
+        .phone-number {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin: 1rem 0;
+        }
+        
+        /* Footer Styles */
+        footer {
+            background-color: var(--secondary);
+            color: white;
+            padding: 2rem 0;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .footer-links {
+            display: flex;
+            margin: 1rem 0;
+        }
+        
+        .footer-links a {
+            color: white;
+            margin: 0 1rem;
+            text-decoration: none;
+        }
+        
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+        
+        .copyright {
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            color: #ccc;
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav ul {
+                margin-top: 1rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            nav ul li {
+                margin: 0.5rem;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .stats-grid, .resource-cards {
+                grid-template-columns: 1fr;
+            }
+            
+            .comparison-table {
+                font-size: 0.9rem;
+            }
+            
+            .phone-number {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
 </head>
 <body>
-
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-female"></i>
+                    Tunisian Women's Rights
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="#" class="nav-link active" data-section="home">Tunisian Law</a></li>
+                        <li><a href="#" class="nav-link" data-section="violence">Violence Statistics</a></li>
+                        <li><a href="#" class="nav-link" data-section="disabilities">Women with Disabilities</a></li>
+                        <li><a href="#" class="nav-link" data-section="resources">Support Resources</a></li>
+                        <li><a href="#" class="nav-link" data-section="comparison">Global Comparison</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+    
+    <section class="hero">
+        <div class="container">
+            <h1>Ending Violence Against Tunisian Women</h1>
+            <p>Comprehensive information about legal protections, support resources, and the current situation for women facing violence in Tunisia</p>
+            <a href="#" class="btn" data-section="resources">Get Help Now</a>
+        </div>
+    </section>
+    
+    <main class="container">
+        <section id="home" class="section active">
+            <h1>Tunisian Law on Violence Against Women</h1>
+            
+            <p>Tunisia has been a pioneer in women's rights in the Arab world, with progressive legislation aimed at protecting women from violence and discrimination.</p>
+            
+            <div class="highlight">
+                <h2>Law No. 2017-58 on Eliminating Violence Against Women</h2>
+                <p>This landmark legislation, adopted in 2017, represents a comprehensive approach to combating violence against women in Tunisia.</p>
+            </div>
+            
+            <h2>Key Provisions of the Law</h2>
+            
+            <ul>
+                <li><strong>Comprehensive Definition of Violence:</strong> The law defines violence against women as "any physical, moral, sexual or economic aggression" against women based on discrimination between the two sexes.</li>
+                
+                <li><strong>Criminalization of Marital Rape:</strong> For the first time in Tunisian history, the law explicitly criminalizes marital rape.</li>
+                
+                <li><strong>Protection Orders:</strong> The law introduces protection orders that can be issued by courts to protect women from their aggressors.</li>
+                
+                <li><strong>Economic Violence:</strong> The legislation recognizes economic violence, including deprivation of resources and preventing women from working.</li>
+                
+                <li><strong>Strengthened Penalties:</strong> The law increases penalties for sexual harassment in public spaces and workplaces.</li>
+                
+                <li><strong>Support Services:</strong> It mandates the establishment of specialized units within police stations and courts to handle cases of violence against women.</li>
+            </ul>
+        </section>
+        
+        <section id="violence" class="section">
+            <h1>State of Violence Against Women in Tunisia</h1>
+            
+            <p>Despite progressive legislation, violence against women remains a significant problem in Tunisia. Here are key statistics and insights into the current situation.</p>
+            
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">53%</div>
+                    <div class="stat-label">of Tunisian women have experienced some form of violence in their lifetime</div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-number">15%</div>
+                    <div class="stat-label">of women reported physical violence in the past year</div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-number">47%</div>
+                    <div class="stat-label">of women experienced psychological violence</div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-number">90%</div>
+                    <div class="stat-label">of women who experienced violence did not seek help</div>
+                </div>
+            </div>
+            
+            <h2>Forms of Violence</h2>
+            
+            <ul>
+                <li><strong>Domestic Violence:</strong> The most common form, often underreported due to social stigma and economic dependence.</li>
+                
+                <li><strong>Sexual Harassment:</strong> Prevalent in public spaces and workplaces, despite legal prohibitions.</li>
+                
+                <li><strong>Economic Violence:</strong> Includes controlling women's access to financial resources and employment.</li>
+                
+                <li><strong>Psychological Violence:</strong> Verbal abuse, threats, and controlling behaviors that undermine women's self-esteem.</li>
+            </ul>
+        </section>
+        
+        <section id="disabilities" class="section">
+            <h1>Violence Against Women with Disabilities</h1>
+            
+            <p>Women with disabilities face compounded discrimination and higher rates of violence in Tunisia, often with limited access to support services.</p>
+            
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">2-3x</div>
+                    <div class="stat-label">Higher risk of violence compared to women without disabilities</div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-number">68%</div>
+                    <div class="stat-label">of women with disabilities experience violence</div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-number">40%</div>
+                    <div class="stat-label">face economic violence and financial abuse</div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-number">85%</div>
+                    <div class="stat-label">of cases go unreported</div>
+                </div>
+            </div>
+            
+            <h2>Types of Violence Faced by Women with Disabilities</h2>
+            
+            <h3>Physical Violence</h3>
+            <ul>
+                <li>Hitting, pushing, or physical restraint</li>
+                <li>Withholding necessary assistive devices</li>
+                <li>Forced medication or medical procedures</li>
+            </ul>
+            
+            <h3>Psychological Violence</h3>
+            <ul>
+                <li>Verbal abuse and humiliation related to disability</li>
+                <li>Isolation from family and community</li>
+                <li>Threats of institutionalization</li>
+            </ul>
+            
+            <h3>Sexual Violence</h3>
+            <ul>
+                <li>Higher rates of sexual assault</li>
+                <li>Forced sterilization</li>
+                <li>Reproductive coercion</li>
+            </ul>
+            
+            <h3>Economic Violence</h3>
+            <ul>
+                <li>Withholding disability benefits</li>
+                <li>Preventing access to employment</li>
+                <li>Financial exploitation</li>
+            </ul>
+            
+            <div class="highlight">
+                <h3>Legal Protections</h3>
+                <p>Law 58 (2017) specifically includes protections for women with disabilities, recognizing their particular vulnerability to violence. The law mandates accessibility in shelters and support services.</p>
+            </div>
+            
+            <h2>Economic Integration Programs</h2>
+            <p>Several programs aim to economically empower women with disabilities in Tunisia:</p>
+            <ul>
+                <li>Vocational training programs adapted for different disabilities</li>
+                <li>Micro-credit initiatives specifically for women with disabilities</li>
+                <li>Quota systems in public sector employment</li>
+                <li>Supported employment programs</li>
+                <li>Entrepreneurship grants and business development support</li>
+            </ul>
+        </section>
+        
+        <section id="resources" class="section">
+            <h1>Support Resources for Victims of Violence</h1>
+            
+            <div class="contact-info">
+                <h2>National Green Line for Reporting Violence</h2>
+                <div class="phone-number">1899</div>
+                <p>Free, confidential, available 24/7 for reporting violence and accessing support services</p>
+            </div>
+            
+            <h2>Specialized Units</h2>
+            <p>Tunisia has established specialized units to handle cases of violence against women:</p>
+            
+            <div class="resource-cards">
+                <div class="resource-card">
+                    <div class="card-header">
+                        <h3>Specialized Police Units</h3>
+                    </div>
+                    <div class="card-body">
+                        <ul>
+                            <li>Located in main police stations across Tunisia</li>
+                            <li>Specially trained female officers</li>
+                            <li>Confidential reporting procedures</li>
+                            <li>Immediate protection measures</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="resource-card">
+                    <div class="card-header">
+                        <h3>Regional Coordination Units</h3>
+                    </div>
+                    <div class="card-body">
+                        <ul>
+                            <li>Coordinate between different support services</li>
+                            <li>Available in all 24 governorates</li>
+                            <li>Multi-disciplinary teams (legal, psychological, social)</li>
+                            <li>Case management and follow-up</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="resource-card">
+                    <div class="card-header">
+                        <h3>Specialized Courts</h3>
+                    </div>
+                    <div class="card-body">
+                        <ul>
+                            <li>Dedicated judges for violence cases</li>
+                            <li>Expedited procedures</li>
+                            <li>Protection orders available</li>
+                            <li>Victim-friendly courtrooms</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <h2>Additional Support Services</h2>
+            
+            <div class="resource-cards">
+                <div class="resource-card">
+                    <div class="card-header">
+                        <h3>Shelters and Safe Houses</h3>
+                    </div>
+                    <div class="card-body">
+                        <ul>
+                            <li>Emergency accommodation</li>
+                            <li>Psychological support</li>
+                            <li>Legal assistance</li>
+                            <li>Accessible facilities for women with disabilities</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="resource-card">
+                    <div class="card-header">
+                        <h3>Legal Aid Services</h3>
+                    </div>
+                    <div class="card-body">
+                        <ul>
+                            <li>Free legal consultation</li>
+                            <li>Court representation</li>
+                            <li>Assistance with protection orders</li>
+                            <li>Help with divorce and custody cases</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="resource-card">
+                    <div class="card-header">
+                        <h3>Economic Integration Programs</h3>
+                    </div>
+                    <div class="card-body">
+                        <ul>
+                            <li>Vocational training</li>
+                            <li>Job placement assistance</li>
+                            <li>Micro-credit programs</li>
+                            <li>Entrepreneurship support</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="comparison" class="section">
+            <h1>Global Comparison: Tunisian Women vs. Women Worldwide</h1>
+            
+            <p>This section compares the situation of Tunisian women with women from different regions around the world in terms of legal protections, social attitudes, and prevalence of violence.</p>
+            
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Region/Country</th>
+                        <th>Legal Framework</th>
+                        <th>Prevalence of Violence</th>
+                        <th>Social Attitudes</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Tunisia</strong></td>
+                        <td>Progressive laws with comprehensive VAW legislation</td>
+                        <td>53% lifetime prevalence</td>
+                        <td>Mixed - progressive urban areas, conservative rural regions</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Scandinavian Countries</strong></td>
+                        <td>Strong legal protections, specialized courts</td>
+                        <td>22-30% lifetime prevalence</td>
+                        <td>Generally egalitarian with strong institutional support</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Other MENA Countries</strong></td>
+                        <td>Varies widely - Tunisia is regional leader</td>
+                        <td>30-70% lifetime prevalence</td>
+                        <td>Predominantly patriarchal with strong family codes</td>
+                    </tr>
+                    <tr>
+                        <td><strong>United States</strong></td>
+                        <td>VAWA provides framework, but implementation varies</td>
+                        <td>36% lifetime prevalence</td>
+                        <td>Mixed - progressive policies but persistent cultural issues</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Sub-Saharan Africa</strong></td>
+                        <td>Weak legal frameworks in many countries</td>
+                        <td>Up to 65% lifetime prevalence in some regions</td>
+                        <td>Strong patriarchal traditions, limited institutional support</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <h2>Key Observations</h2>
+            
+            <ul>
+                <li>Tunisia stands out in the MENA region for its progressive legislation on women's rights.</li>
+                
+                <li>Despite strong laws, implementation gaps mean violence rates remain high compared to countries with similar legal frameworks.</li>
+                
+                <li>Cultural attitudes and economic factors significantly influence the effectiveness of legal protections.</li>
+                
+                <li>Tunisia's approach combines legal reform with awareness campaigns, similar to strategies in Scandinavian countries.</li>
+            </ul>
+        </section>
+    </main>
+    
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-links">
+                    <a href="#">About</a>
+                    <a href="#">Resources</a>
+                    <a href="#">Get Help</a>
+                    <a href="#">Contact</a>
+                </div>
+                <div class="copyright">
+                    &copy; 2023 Tunisian Women's Rights Initiative. All rights reserved.
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // Navigation functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const navLinks = document.querySelectorAll('.nav-link');
+            const sections = document.querySelectorAll('.section');
+            const heroBtn = document.querySelector('.btn');
+            
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    // Remove active class from all links and sections
+                    navLinks.forEach(item => item.classList.remove('active'));
+                    sections.forEach(section => section.classList.remove('active'));
+                    
+                    // Add active class to clicked link
+                    this.classList.add('active');
+                    
+                    // Show corresponding section
+                    const sectionId = this.getAttribute('data-section');
+                    document.getElementById(sectionId).classList.add('active');
+                    
+                    // Scroll to section
+                    document.getElementById(sectionId).scrollIntoView({behavior: 'smooth'});
+                });
+            });
+            
+            // Hero button functionality
+            heroBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // Remove active class from all links and sections
+                navLinks.forEach(item => item.classList.remove('active'));
+                sections.forEach(section => section.classList.remove('active'));
+                
+                // Add active class to resources link
+                document.querySelector('[data-section="resources"]').classList.add('active');
+                
+                // Show resources section
+                document.getElementById('resources').classList.add('active');
+                
+                // Scroll to section
+                document.getElementById('resources').scrollIntoView({behavior: 'smooth'});
+            });
+        });
+    </script>
 </body>
 </html>
