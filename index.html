@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Violence Against Tunisian Women - Comprehensive Resource</title>
+    <title>Violence Against Tunisian Women - العنف ضد المرأة التونسية</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         /* Reset and Base Styles */
@@ -30,6 +30,12 @@
             background-color: var(--light);
             color: var(--dark);
             line-height: 1.6;
+            transition: all 0.3s ease;
+        }
+        
+        body.rtl {
+            direction: rtl;
+            font-family: 'Segoe UI', Tahoma, 'Arabic Typesetting', serif;
         }
         
         /* Header Styles */
@@ -66,13 +72,48 @@
             margin-right: 10px;
         }
         
+        .rtl .logo i {
+            margin-right: 0;
+            margin-left: 10px;
+        }
+        
+        .language-switcher {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .lang-btn {
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background 0.3s;
+            font-weight: 500;
+        }
+        
+        .lang-btn:hover, .lang-btn.active {
+            background: rgba(255, 255, 255, 0.4);
+        }
+        
         nav ul {
             display: flex;
             list-style: none;
         }
         
+        .rtl nav ul {
+            padding-right: 0;
+        }
+        
         nav ul li {
             margin-left: 1.5rem;
+        }
+        
+        .rtl nav ul li {
+            margin-left: 0;
+            margin-right: 1.5rem;
         }
         
         nav ul li a {
@@ -96,6 +137,10 @@
             color: white;
             padding: 4rem 0;
             text-align: center;
+        }
+        
+        .rtl .hero {
+            text-align: right;
         }
         
         .hero h1 {
@@ -138,6 +183,10 @@
             margin-bottom: 2rem;
         }
         
+        .rtl .section {
+            text-align: right;
+        }
+        
         .section.active {
             display: block;
             animation: fadeIn 0.5s ease;
@@ -155,9 +204,17 @@
             padding-bottom: 0.5rem;
         }
         
+        .rtl h1 {
+            text-align: right;
+        }
+        
         h2 {
             color: var(--secondary);
             margin: 1.5rem 0 1rem;
+        }
+        
+        .rtl h2 {
+            text-align: right;
         }
         
         h3 {
@@ -165,8 +222,16 @@
             margin: 1.2rem 0 0.8rem;
         }
         
+        .rtl h3 {
+            text-align: right;
+        }
+        
         p {
             margin-bottom: 1rem;
+        }
+        
+        .rtl p {
+            text-align: right;
         }
         
         .highlight {
@@ -176,9 +241,19 @@
             margin: 1.5rem 0;
         }
         
+        .rtl .highlight {
+            border-left: none;
+            border-right: 4px solid var(--primary-light);
+        }
+        
         ul {
             margin-left: 1.5rem;
             margin-bottom: 1.5rem;
+        }
+        
+        .rtl ul {
+            margin-left: 0;
+            margin-right: 1.5rem;
         }
         
         li {
@@ -230,6 +305,10 @@
             border-bottom: 1px solid var(--light-gray);
         }
         
+        .rtl .comparison-table th, .rtl .comparison-table td {
+            text-align: right;
+        }
+        
         .comparison-table th {
             background-color: var(--light-gray);
             font-weight: 600;
@@ -270,6 +349,10 @@
             padding: 1.5rem;
         }
         
+        .rtl .card-body {
+            text-align: right;
+        }
+        
         .card-body ul {
             margin-left: 0;
             list-style-type: none;
@@ -281,12 +364,22 @@
             position: relative;
         }
         
+        .rtl .card-body li {
+            padding-left: 0;
+            padding-right: 1.5rem;
+        }
+        
         .card-body li:before {
             content: "•";
             color: var(--primary-light);
             font-weight: bold;
             position: absolute;
             left: 0;
+        }
+        
+        .rtl .card-body li:before {
+            left: auto;
+            right: 0;
         }
         
         .contact-info {
@@ -345,13 +438,25 @@
                 text-align: center;
             }
             
+            .rtl .header-content {
+                text-align: right;
+            }
+            
             nav ul {
                 margin-top: 1rem;
                 flex-wrap: wrap;
                 justify-content: center;
             }
             
+            .rtl nav ul {
+                padding-right: 0;
+            }
+            
             nav ul li {
+                margin: 0.5rem;
+            }
+            
+            .rtl nav ul li {
                 margin: 0.5rem;
             }
             
@@ -379,15 +484,35 @@
             <div class="header-content">
                 <div class="logo">
                     <i class="fas fa-female"></i>
-                    Tunisian Women's Rights
+                    <span class="en-text">Tunisian Women's Rights</span>
+                    <span class="ar-text" style="display: none;">حقوق المرأة التونسية</span>
+                </div>
+                <div class="language-switcher">
+                    <button class="lang-btn active" data-lang="en">EN</button>
+                    <button class="lang-btn" data-lang="ar">AR</button>
                 </div>
                 <nav>
                     <ul>
-                        <li><a href="#" class="nav-link active" data-section="home">Tunisian Law</a></li>
-                        <li><a href="#" class="nav-link" data-section="violence">Violence Statistics</a></li>
-                        <li><a href="#" class="nav-link" data-section="disabilities">Women with Disabilities</a></li>
-                        <li><a href="#" class="nav-link" data-section="resources">Support Resources</a></li>
-                        <li><a href="#" class="nav-link" data-section="comparison">Global Comparison</a></li>
+                        <li><a href="#" class="nav-link active" data-section="home">
+                            <span class="en-text">Tunisian Law</span>
+                            <span class="ar-text" style="display: none;">القانون التونسي</span>
+                        </a></li>
+                        <li><a href="#" class="nav-link" data-section="violence">
+                            <span class="en-text">Violence Statistics</span>
+                            <span class="ar-text" style="display: none;">إحصائيات العنف</span>
+                        </a></li>
+                        <li><a href="#" class="nav-link" data-section="disabilities">
+                            <span class="en-text">Women with Disabilities</span>
+                            <span class="ar-text" style="display: none;">النساء ذوات الإعاقة</span>
+                        </a></li>
+                        <li><a href="#" class="nav-link" data-section="resources">
+                            <span class="en-text">Support Resources</span>
+                            <span class="ar-text" style="display: none;">موارد الدعم</span>
+                        </a></li>
+                        <li><a href="#" class="nav-link" data-section="comparison">
+                            <span class="en-text">Global Comparison</span>
+                            <span class="ar-text" style="display: none;">مقارنة عالمية</span>
+                        </a></li>
                     </ul>
                 </nav>
             </div>
@@ -396,250 +521,529 @@
     
     <section class="hero">
         <div class="container">
-            <h1>Ending Violence Against Tunisian Women</h1>
-            <p>Comprehensive information about legal protections, support resources, and the current situation for women facing violence in Tunisia</p>
-            <a href="#" class="btn" data-section="resources">Get Help Now</a>
+            <h1>
+                <span class="en-text">Ending Violence Against Tunisian Women</span>
+                <span class="ar-text" style="display: none;">وضع حد للعنف ضد المرأة التونسية</span>
+            </h1>
+            <p>
+                <span class="en-text">Comprehensive information about legal protections, support resources, and the current situation for women facing violence in Tunisia</span>
+                <span class="ar-text" style="display: none;">معلومات شاملة حول الحماية القانونية وموارد الدعم والوضع الحالي للمرأة التي تواجه العنف في تونس</span>
+            </p>
+            <a href="#" class="btn" data-section="resources">
+                <span class="en-text">Get Help Now</span>
+                <span class="ar-text" style="display: none;">احصل على المساعدة الآن</span>
+            </a>
         </div>
     </section>
     
     <main class="container">
         <section id="home" class="section active">
-            <h1>Tunisian Law on Violence Against Women</h1>
+            <h1>
+                <span class="en-text">Tunisian Law on Violence Against Women</span>
+                <span class="ar-text" style="display: none;">القانون التونسي لمكافحة العنف ضد المرأة</span>
+            </h1>
             
-            <p>Tunisia has been a pioneer in women's rights in the Arab world, with progressive legislation aimed at protecting women from violence and discrimination.</p>
+            <p>
+                <span class="en-text">Tunisia has been a pioneer in women's rights in the Arab world, with progressive legislation aimed at protecting women from violence and discrimination.</span>
+                <span class="ar-text" style="display: none;">كانت تونس رائدة في مجال حقوق المرأة في العالم العربي، بتشريعات تقدمية تهدف إلى حماية المرأة من العنف والتمييز.</span>
+            </p>
             
             <div class="highlight">
-                <h2>Law No. 2017-58 on Eliminating Violence Against Women</h2>
-                <p>This landmark legislation, adopted in 2017, represents a comprehensive approach to combating violence against women in Tunisia.</p>
+                <h2>
+                    <span class="en-text">Law No. 2017-58 on Eliminating Violence Against Women</span>
+                    <span class="ar-text" style="display: none;">قانون عدد 58 لسنة 2017 المتعلق بالقضاء على العنف ضد المرأة</span>
+                </h2>
+                <p>
+                    <span class="en-text">This landmark legislation, adopted in 2017, represents a comprehensive approach to combating violence against women in Tunisia.</span>
+                    <span class="ar-text" style="display: none;">يمثل هذا التشريع التاريخي، الذي تم اعتماده في عام 2017، نهجًا شاملاً لمكافحة العنف ضد المرأة في تونس.</span>
+                </p>
             </div>
             
-            <h2>Key Provisions of the Law</h2>
+            <h2>
+                <span class="en-text">Key Provisions of the Law</span>
+                <span class="ar-text" style="display: none;">أحكام رئيسية للقانون</span>
+            </h2>
             
             <ul>
-                <li><strong>Comprehensive Definition of Violence:</strong> The law defines violence against women as "any physical, moral, sexual or economic aggression" against women based on discrimination between the two sexes.</li>
+                <li>
+                    <span class="en-text"><strong>Comprehensive Definition of Violence:</strong> The law defines violence against women as "any physical, moral, sexual or economic aggression" against women based on discrimination between the two sexes.</span>
+                    <span class="ar-text" style="display: none;"><strong>تعريف شامل للعنف:</strong> يعرف القانون العنف ضد المرأة بأنه "أي اعتداء بدني أو معنوي أو جنسي أو اقتصادي" ضد المرأة على أساس التمييز بين الجنسين.</span>
+                </li>
                 
-                <li><strong>Criminalization of Marital Rape:</strong> For the first time in Tunisian history, the law explicitly criminalizes marital rape.</li>
+                <li>
+                    <span class="en-text"><strong>Criminalization of Marital Rape:</strong> For the first time in Tunisian history, the law explicitly criminalizes marital rape.</span>
+                    <span class="ar-text" style="display: none;"><strong>تجريم الاغتصاب الزوجي:</strong> لأول مرة في التاريخ التونسي، يجرم القانون صراحة الاغتصاب الزوجي.</span>
+                </li>
                 
-                <li><strong>Protection Orders:</strong> The law introduces protection orders that can be issued by courts to protect women from their aggressors.</li>
+                <li>
+                    <span class="en-text"><strong>Protection Orders:</strong> The law introduces protection orders that can be issued by courts to protect women from their aggressors.</span>
+                    <span class="ar-text" style="display: none;"><strong>أوامر الحماية:</strong> يقدم القانون أوامر الحماية التي يمكن للمحاكم إصدارها لحماية المرأة من المعتدين عليها.</span>
+                </li>
                 
-                <li><strong>Economic Violence:</strong> The legislation recognizes economic violence, including deprivation of resources and preventing women from working.</li>
+                <li>
+                    <span class="en-text"><strong>Economic Violence:</strong> The legislation recognizes economic violence, including deprivation of resources and preventing women from working.</span>
+                    <span class="ar-text" style="display: none;"><strong>العنف الاقتصادي:</strong> يعترف التشريع بالعنف الاقتصادي، بما في ذلك الحرمان من الموارد ومنع المرأة من العمل.</span>
+                </li>
                 
-                <li><strong>Strengthened Penalties:</strong> The law increases penalties for sexual harassment in public spaces and workplaces.</li>
+                <li>
+                    <span class="en-text"><strong>Strengthened Penalties:</strong> The law increases penalties for sexual harassment in public spaces and workplaces.</span>
+                    <span class="ar-text" style="display: none;"><strong>تشديد العقوبات:</strong> يزيد القانون العقوبات على التحرش الجنسي في الأماكن العامة وأماكن العمل.</span>
+                </li>
                 
-                <li><strong>Support Services:</strong> It mandates the establishment of specialized units within police stations and courts to handle cases of violence against women.</li>
+                <li>
+                    <span class="en-text"><strong>Support Services:</strong> It mandates the establishment of specialized units within police stations and courts to handle cases of violence against women.</span>
+                    <span class="ar-text" style="display: none;"><strong>خدمات الدعم:</strong> يفرض إنشاء وحدات متخصصة داخل مراكز الشرطة والمحاكم للتعامل مع حالات العنف ضد المرأة.</span>
+                </li>
             </ul>
         </section>
         
         <section id="violence" class="section">
-            <h1>State of Violence Against Women in Tunisia</h1>
+            <h1>
+                <span class="en-text">State of Violence Against Women in Tunisia</span>
+                <span class="ar-text" style="display: none;">حالة العنف ضد المرأة في تونس</span>
+            </h1>
             
-            <p>Despite progressive legislation, violence against women remains a significant problem in Tunisia. Here are key statistics and insights into the current situation.</p>
+            <p>
+                <span class="en-text">Despite progressive legislation, violence against women remains a significant problem in Tunisia. Here are key statistics and insights into the current situation.</span>
+                <span class="ar-text" style="display: none;">على الرغم من التشريعات التقدمية، لا يزال العنف ضد المرأة يمثل مشكلة كبيرة في تونس. إليك الإحصائيات الرئيسية والرؤى حول الوضع الحالي.</span>
+            </p>
             
             <div class="stats-grid">
                 <div class="stat-card">
                     <div class="stat-number">53%</div>
-                    <div class="stat-label">of Tunisian women have experienced some form of violence in their lifetime</div>
+                    <div class="stat-label">
+                        <span class="en-text">of Tunisian women have experienced some form of violence in their lifetime</span>
+                        <span class="ar-text" style="display: none;">من النساء التونسيات تعرضن لشكل من أشكال العنف خلال حياتهن</span>
+                    </div>
                 </div>
                 
                 <div class="stat-card">
                     <div class="stat-number">15%</div>
-                    <div class="stat-label">of women reported physical violence in the past year</div>
+                    <div class="stat-label">
+                        <span class="en-text">of women reported physical violence in the past year</span>
+                        <span class="ar-text" style="display: none;">من النساء أبلغن عن عنف جسدي في السنة الماضية</span>
+                    </div>
                 </div>
                 
                 <div class="stat-card">
                     <div class="stat-number">47%</div>
-                    <div class="stat-label">of women experienced psychological violence</div>
+                    <div class="stat-label">
+                        <span class="en-text">of women experienced psychological violence</span>
+                        <span class="ar-text" style="display: none;">من النساء تعرضن للعنف النفسي</span>
+                    </div>
                 </div>
                 
                 <div class="stat-card">
                     <div class="stat-number">90%</div>
-                    <div class="stat-label">of women who experienced violence did not seek help</div>
+                    <div class="stat-label">
+                        <span class="en-text">of women who experienced violence did not seek help</span>
+                        <span class="ar-text" style="display: none;">من النساء اللواتي تعرضن للعنف لم يطلبن المساعدة</span>
+                    </div>
                 </div>
             </div>
             
-            <h2>Forms of Violence</h2>
+            <h2>
+                <span class="en-text">Forms of Violence</span>
+                <span class="ar-text" style="display: none;">أشكال العنف</span>
+            </h2>
             
             <ul>
-                <li><strong>Domestic Violence:</strong> The most common form, often underreported due to social stigma and economic dependence.</li>
+                <li>
+                    <span class="en-text"><strong>Domestic Violence:</strong> The most common form, often underreported due to social stigma and economic dependence.</span>
+                    <span class="ar-text" style="display: none;"><strong>العنف المنزلي:</strong> الشكل الأكثر شيوعًا، وغالبًا ما يتم الإبلاغ عنه بشكل أقل بسبب الوصمة الاجتماعية والاعتماد الاقتصادي.</span>
+                </li>
                 
-                <li><strong>Sexual Harassment:</strong> Prevalent in public spaces and workplaces, despite legal prohibitions.</li>
+                <li>
+                    <span class="en-text"><strong>Sexual Harassment:</strong> Prevalent in public spaces and workplaces, despite legal prohibitions.</span>
+                    <span class="ar-text" style="display: none;"><strong>التحرش الجنسي:</strong> منتشر في الأماكن العامة وأماكن العمل، على الرغم من الحظر القانوني.</span>
+                </li>
                 
-                <li><strong>Economic Violence:</strong> Includes controlling women's access to financial resources and employment.</li>
+                <li>
+                    <span class="en-text"><strong>Economic Violence:</strong> Includes controlling women's access to financial resources and employment.</span>
+                    <span class="ar-text" style="display: none;"><strong>العنف الاقتصادي:</strong> يشمل السيطرة على وصول المرأة إلى الموارد المالية والعمل.</span>
+                </li>
                 
-                <li><strong>Psychological Violence:</strong> Verbal abuse, threats, and controlling behaviors that undermine women's self-esteem.</li>
+                <li>
+                    <span class="en-text"><strong>Psychological Violence:</strong> Verbal abuse, threats, and controlling behaviors that undermine women's self-esteem.</span>
+                    <span class="ar-text" style="display: none;"><strong>العنف النفسي:</strong> الإساءة اللفظية والتهديدات والسلوكيات المسيطرة التي تقوض احترام المرأة لذاتها.</span>
+                </li>
             </ul>
         </section>
         
         <section id="disabilities" class="section">
-            <h1>Violence Against Women with Disabilities</h1>
+            <h1>
+                <span class="en-text">Violence Against Women with Disabilities</span>
+                <span class="ar-text" style="display: none;">العنف ضد النساء ذوات الإعاقة</span>
+            </h1>
             
-            <p>Women with disabilities face compounded discrimination and higher rates of violence in Tunisia, often with limited access to support services.</p>
+            <p>
+                <span class="en-text">Women with disabilities face compounded discrimination and higher rates of violence in Tunisia, often with limited access to support services.</span>
+                <span class="ar-text" style="display: none;">تواجه النساء ذوات الإعاقة تمييزًا مضاعفًا ومعدلات أعلى من العنف في تونس، وغالبًا ما يكون وصولهن إلى خدمات الدعم محدودًا.</span>
+            </p>
             
             <div class="stats-grid">
                 <div class="stat-card">
                     <div class="stat-number">2-3x</div>
-                    <div class="stat-label">Higher risk of violence compared to women without disabilities</div>
+                    <div class="stat-label">
+                        <span class="en-text">Higher risk of violence compared to women without disabilities</span>
+                        <span class="ar-text" style="display: none;">زيادة خطر التعرض للعنف مقارنة بالنساء غير ذوات الإعاقة</span>
+                    </div>
                 </div>
                 
                 <div class="stat-card">
                     <div class="stat-number">68%</div>
-                    <div class="stat-label">of women with disabilities experience violence</div>
+                    <div class="stat-label">
+                        <span class="en-text">of women with disabilities experience violence</span>
+                        <span class="ar-text" style="display: none;">من النساء ذوات الإعاقة يتعرضن للعنف</span>
+                    </div>
                 </div>
                 
                 <div class="stat-card">
                     <div class="stat-number">40%</div>
-                    <div class="stat-label">face economic violence and financial abuse</div>
+                    <div class="stat-label">
+                        <span class="en-text">face economic violence and financial abuse</span>
+                        <span class="ar-text" style="display: none;">يواجهن العنف الاقتصادي والإساءة المالية</span>
+                    </div>
                 </div>
                 
                 <div class="stat-card">
                     <div class="stat-number">85%</div>
-                    <div class="stat-label">of cases go unreported</div>
+                    <div class="stat-label">
+                        <span class="en-text">of cases go unreported</span>
+                        <span class="ar-text" style="display: none;">من الحالات لا يتم الإبلاغ عنها</span>
+                    </div>
                 </div>
             </div>
             
-            <h2>Types of Violence Faced by Women with Disabilities</h2>
+            <h2>
+                <span class="en-text">Types of Violence Faced by Women with Disabilities</span>
+                <span class="ar-text" style="display: none;">أنواع العنف التي تواجهها النساء ذوات الإعاقة</span>
+            </h2>
             
-            <h3>Physical Violence</h3>
+            <h3>
+                <span class="en-text">Physical Violence</span>
+                <span class="ar-text" style="display: none;">العنف الجسدي</span>
+            </h3>
             <ul>
-                <li>Hitting, pushing, or physical restraint</li>
-                <li>Withholding necessary assistive devices</li>
-                <li>Forced medication or medical procedures</li>
+                <li>
+                    <span class="en-text">Hitting, pushing, or physical restraint</span>
+                    <span class="ar-text" style="display: none;">الضرب، الدفع، أو التقييد الجسدي</span>
+                </li>
+                <li>
+                    <span class="en-text">Withholding necessary assistive devices</span>
+                    <span class="ar-text" style="display: none;">حجب الأجهزة المساعدة الضرورية</span>
+                </li>
+                <li>
+                    <span class="en-text">Forced medication or medical procedures</span>
+                    <span class="ar-text" style="display: none;">الإجبار على تناول الأدوية أو الخضوع لإجراءات طبية</span>
+                </li>
             </ul>
             
-            <h3>Psychological Violence</h3>
+            <h3>
+                <span class="en-text">Psychological Violence</span>
+                <span class="ar-text" style="display: none;">العنف النفسي</span>
+            </h3>
             <ul>
-                <li>Verbal abuse and humiliation related to disability</li>
-                <li>Isolation from family and community</li>
-                <li>Threats of institutionalization</li>
+                <li>
+                    <span class="en-text">Verbal abuse and humiliation related to disability</span>
+                    <span class="ar-text" style="display: none;">الإساءة اللفظية والإهانة المتعلقة بالإعاقة</span>
+                </li>
+                <li>
+                    <span class="en-text">Isolation from family and community</span>
+                    <span class="ar-text" style="display: none;">العزلة عن الأسرة والمجتمع</span>
+                </li>
+                <li>
+                    <span class="en-text">Threats of institutionalization</span>
+                    <span class="ar-text" style="display: none;">التهديد بالحجز في مؤسسات</span>
+                </li>
             </ul>
             
-            <h3>Sexual Violence</h3>
+            <h3>
+                <span class="en-text">Sexual Violence</span>
+                <span class="ar-text" style="display: none;">العنف الجنسي</span>
+            </h3>
             <ul>
-                <li>Higher rates of sexual assault</li>
-                <li>Forced sterilization</li>
-                <li>Reproductive coercion</li>
+                <li>
+                    <span class="en-text">Higher rates of sexual assault</span>
+                    <span class="ar-text" style="display: none;">معدلات أعلى للاعتداء الجنسي</span>
+                </li>
+                <li>
+                    <span class="en-text">Forced sterilization</span>
+                    <span class="ar-text" style="display: none;">التعقيم القسري</span>
+                </li>
+                <li>
+                    <span class="en-text">Reproductive coercion</span>
+                    <span class="ar-text" style="display: none;">الإكراه على الإنجاب</span>
+                </li>
             </ul>
             
-            <h3>Economic Violence</h3>
+            <h3>
+                <span class="en-text">Economic Violence</span>
+                <span class="ar-text" style="display: none;">العنف الاقتصادي</span>
+            </h3>
             <ul>
-                <li>Withholding disability benefits</li>
-                <li>Preventing access to employment</li>
-                <li>Financial exploitation</li>
+                <li>
+                    <span class="en-text">Withholding disability benefits</span>
+                    <span class="ar-text" style="display: none;">حجب استحقاقات الإعاقة</span>
+                </li>
+                <li>
+                    <span class="en-text">Preventing access to employment</span>
+                    <span class="ar-text" style="display: none;">منع الوصول إلى العمل</span>
+                </li>
+                <li>
+                    <span class="en-text">Financial exploitation</span>
+                    <span class="ar-text" style="display: none;">الاستغلال المالي</span>
+                </li>
             </ul>
             
             <div class="highlight">
-                <h3>Legal Protections</h3>
-                <p>Law 58 (2017) specifically includes protections for women with disabilities, recognizing their particular vulnerability to violence. The law mandates accessibility in shelters and support services.</p>
+                <h3>
+                    <span class="en-text">Legal Protections</span>
+                    <span class="ar-text" style="display: none;">الحماية القانونية</span>
+                </h3>
+                <p>
+                    <span class="en-text">Law 58 (2017) specifically includes protections for women with disabilities, recognizing their particular vulnerability to violence. The law mandates accessibility in shelters and support services.</span>
+                    <span class="ar-text" style="display: none;">يتضمن قانون 58 (2017) حماية خاصة للنساء ذوات الإعاقة، معترفًا بضعفهن الخاص تجاه العنف. يفرض القانون إتاحة الوصول إلى الملاجئ وخدمات الدعم.</span>
+                </p>
             </div>
             
-            <h2>Economic Integration Programs</h2>
-            <p>Several programs aim to economically empower women with disabilities in Tunisia:</p>
+            <h2>
+                <span class="en-text">Economic Integration Programs</span>
+                <span class="ar-text" style="display: none;">برامج الإدماج الاقتصادي</span>
+            </h2>
+            <p>
+                <span class="en-text">Several programs aim to economically empower women with disabilities in Tunisia:</span>
+                <span class="ar-text" style="display: none;">تهدف عدة برامج إلى تمكين النساء ذوات الإعاقة اقتصاديًا في تونس:</span>
+            </p>
             <ul>
-                <li>Vocational training programs adapted for different disabilities</li>
-                <li>Micro-credit initiatives specifically for women with disabilities</li>
-                <li>Quota systems in public sector employment</li>
-                <li>Supported employment programs</li>
-                <li>Entrepreneurship grants and business development support</li>
+                <li>
+                    <span class="en-text">Vocational training programs adapted for different disabilities</span>
+                    <span class="ar-text" style="display: none;">برامج التدريب المهني المكيفة للإعاقات المختلفة</span>
+                </li>
+                <li>
+                    <span class="en-text">Micro-credit initiatives specifically for women with disabilities</span>
+                    <span class="ar-text" style="display: none;">مبادرات التمويل الأصغر المخصصة للنساء ذوات الإعاقة</span>
+                </li>
+                <li>
+                    <span class="en-text">Quota systems in public sector employment</span>
+                    <span class="ar-text" style="display: none;">أنظمة الحصص في التوظيف في القطاع العام</span>
+                </li>
+                <li>
+                    <span class="en-text">Supported employment programs</span>
+                    <span class="ar-text" style="display: none;">برامج التوظيف المدعوم</span>
+                </li>
+                <li>
+                    <span class="en-text">Entrepreneurship grants and business development support</span>
+                    <span class="ar-text" style="display: none;">منح ريادة الأعمال ودعم تطوير الأعمال</span>
+                </li>
             </ul>
         </section>
         
         <section id="resources" class="section">
-            <h1>Support Resources for Victims of Violence</h1>
+            <h1>
+                <span class="en-text">Support Resources for Victims of Violence</span>
+                <span class="ar-text" style="display: none;">موارد الدعم لضحايا العنف</span>
+            </h1>
             
             <div class="contact-info">
-                <h2>National Green Line for Reporting Violence</h2>
+                <h2>
+                    <span class="en-text">National Green Line for Reporting Violence</span>
+                    <span class="ar-text" style="display: none;">الخط الأخضر الوطني للإبلاغ عن العنف</span>
+                </h2>
                 <div class="phone-number">1899</div>
-                <p>Free, confidential, available 24/7 for reporting violence and accessing support services</p>
+                <p>
+                    <span class="en-text">Free, confidential, available 24/7 for reporting violence and accessing support services</span>
+                    <span class="ar-text" style="display: none;">مجاني، سري، متاح على مدار 24/7 للإبلاغ عن العنف والوصول إلى خدمات الدعم</span>
+                </p>
             </div>
             
-            <h2>Specialized Units</h2>
-            <p>Tunisia has established specialized units to handle cases of violence against women:</p>
+            <h2>
+                <span class="en-text">Specialized Units</span>
+                <span class="ar-text" style="display: none;">الوحدات المتخصصة</span>
+            </h2>
+            <p>
+                <span class="en-text">Tunisia has established specialized units to handle cases of violence against women:</span>
+                <span class="ar-text" style="display: none;">أنشأت تونس وحدات متخصصة للتعامل مع حالات العنف ضد المرأة:</span>
+            </p>
             
             <div class="resource-cards">
                 <div class="resource-card">
                     <div class="card-header">
-                        <h3>Specialized Police Units</h3>
+                        <h3>
+                            <span class="en-text">Specialized Police Units</span>
+                            <span class="ar-text" style="display: none;">وحدات الشرطة المتخصصة</span>
+                        </h3>
                     </div>
                     <div class="card-body">
                         <ul>
-                            <li>Located in main police stations across Tunisia</li>
-                            <li>Specially trained female officers</li>
-                            <li>Confidential reporting procedures</li>
-                            <li>Immediate protection measures</li>
+                            <li>
+                                <span class="en-text">Located in main police stations across Tunisia</span>
+                                <span class="ar-text" style="display: none;">موجودة في مراكز الشرطة الرئيسية في جميع أنحاء تونس</span>
+                            </li>
+                            <li>
+                                <span class="en-text">Specially trained female officers</span>
+                                <span class="ar-text" style="display: none;">ضابطات مدربات تدريباً خاصاً</span>
+                            </li>
+                            <li>
+                                <span class="en-text">Confidential reporting procedures</span>
+                                <span class="ar-text" style="display: none;">إجراءات الإبلاغ السرية</span>
+                            </li>
+                            <li>
+                                <span class="en-text">Immediate protection measures</span>
+                                <span class="ar-text" style="display: none;">إجراءات الحماية الفورية</span>
+                            </li>
                         </ul>
                     </div>
                 </div>
                 
                 <div class="resource-card">
                     <div class="card-header">
-                        <h3>Regional Coordination Units</h3>
+                        <h3>
+                            <span class="en-text">Regional Coordination Units</span>
+                            <span class="ar-text" style="display: none;">وحدات التنسيق الجهوية</span>
+                        </h3>
                     </div>
                     <div class="card-body">
                         <ul>
-                            <li>Coordinate between different support services</li>
-                            <li>Available in all 24 governorates</li>
-                            <li>Multi-disciplinary teams (legal, psychological, social)</li>
-                            <li>Case management and follow-up</li>
+                            <li>
+                                <span class="en-text">Coordinate between different support services</span>
+                                <span class="ar-text" style="display: none;">التنسيق بين مختلف خدمات الدعم</span>
+                            </li>
+                            <li>
+                                <span class="en-text">Available in all 24 governorates</span>
+                                <span class="ar-text" style="display: none;">متاحة في جميع الولايات الـ 24</span>
+                            </li>
+                            <li>
+                                <span class="en-text">Multi-disciplinary teams (legal, psychological, social)</span>
+                                <span class="ar-text" style="display: none;">فرق متعددة التخصصات (قانونية، نفسية، اجتماعية)</span>
+                            </li>
+                            <li>
+                                <span class="en-text">Case management and follow-up</span>
+                                <span class="ar-text" style="display: none;">إدارة الحالات والمتابعة</span>
+                            </li>
                         </ul>
                     </div>
                 </div>
                 
                 <div class="resource-card">
                     <div class="card-header">
-                        <h3>Specialized Courts</h3>
+                        <h3>
+                            <span class="en-text">Specialized Courts</span>
+                            <span class="ar-text" style="display: none;">المحاكم المتخصصة</span>
+                        </h3>
                     </div>
                     <div class="card-body">
                         <ul>
-                            <li>Dedicated judges for violence cases</li>
-                            <li>Expedited procedures</li>
-                            <li>Protection orders available</li>
-                            <li>Victim-friendly courtrooms</li>
+                            <li>
+                                <span class="en-text">Dedicated judges for violence cases</span>
+                                <span class="ar-text" style="display: none;">قضاة مخصصون لقضايا العنف</span>
+                            </li>
+                            <li>
+                                <span class="en-text">Expedited procedures</span>
+                                <span class="ar-text" style="display: none;">إجراءات مسرعة</span>
+                            </li>
+                            <li>
+                                <span class="en-text">Protection orders available</span>
+                                <span class="ar-text" style="display: none;">أوامر الحماية متاحة</span>
+                            </li>
+                            <li>
+                                <span class="en-text">Victim-friendly courtrooms</span>
+                                <span class="ar-text" style="display: none;">قاعات محكمة صديقة للضحايا</span>
+                            </li>
                         </ul>
                     </div>
                 </div>
             </div>
             
-            <h2>Additional Support Services</h2>
+            <h2>
+                <span class="en-text">Additional Support Services</span>
+                <span class="ar-text" style="display: none;">خدمات الدعم الإضافية</span>
+            </h2>
             
             <div class="resource-cards">
                 <div class="resource-card">
                     <div class="card-header">
-                        <h3>Shelters and Safe Houses</h3>
+                        <h3>
+                            <span class="en-text">Shelters and Safe Houses</span>
+                            <span class="ar-text" style="display: none;">الملاجئ والبيوت الآمنة</span>
+                        </h3>
                     </div>
                     <div class="card-body">
                         <ul>
-                            <li>Emergency accommodation</li>
-                            <li>Psychological support</li>
-                            <li>Legal assistance</li>
-                            <li>Accessible facilities for women with disabilities</li>
+                            <li>
+                                <span class="en-text">Emergency accommodation</span>
+                                <span class="ar-text" style="display: none;">إيواء طارئ</span>
+                            </li>
+                            <li>
+                                <span class="en-text">Psychological support</span>
+                                <span class="ar-text" style="display: none;">دعم نفسي</span>
+                            </li>
+                            <li>
+                                <span class="en-text">Legal assistance</span>
+                                <span class="ar-text" style="display: none;">مساعدة قانونية</span>
+                            </li>
+                            <li>
+                                <span class="en-text">Accessible facilities for women with disabilities</span>
+                                <span class="ar-text" style="display: none;">مرافق يمكن الوصول إليها للنساء ذوات الإعاقة</span>
+                            </li>
                         </ul>
                     </div>
                 </div>
                 
                 <div class="resource-card">
                     <div class="card-header">
-                        <h3>Legal Aid Services</h3>
+                        <h3>
+                            <span class="en-text">Legal Aid Services</span>
+                            <span class="ar-text" style="display: none;">خدمات المساعدة القانونية</span>
+                        </h3>
                     </div>
                     <div class="card-body">
                         <ul>
-                            <li>Free legal consultation</li>
-                            <li>Court representation</li>
-                            <li>Assistance with protection orders</li>
-                            <li>Help with divorce and custody cases</li>
+                            <li>
+                                <span class="en-text">Free legal consultation</span>
+                                <span class="ar-text" style="display: none;">استشارة قانونية مجانية</span>
+                            </li>
+                            <li>
+                                <span class="en-text">Court representation</span>
+                                <span class="ar-text" style="display: none;">تمثيل في المحكمة</span>
+                            </li>
+                            <li>
+                                <span class="en-text">Assistance with protection orders</span>
+                                <span class="ar-text" style="display: none;">المساعدة في الحصول على أوامر الحماية</span>
+                            </li>
+                            <li>
+                                <span class="en-text">Help with divorce and custody cases</span>
+                                <span class="ar-text" style="display: none;">المساعدة في قضايا الطلاق والحضانة</span>
+                            </li>
                         </ul>
                     </div>
                 </div>
                 
                 <div class="resource-card">
                     <div class="card-header">
-                        <h3>Economic Integration Programs</h3>
+                        <h3>
+                            <span class="en-text">Economic Integration Programs</span>
+                            <span class="ar-text" style="display: none;">برامج الإدماج الاقتصادي</span>
+                        </h3>
                     </div>
                     <div class="card-body">
                         <ul>
-                            <li>Vocational training</li>
-                            <li>Job placement assistance</li>
-                            <li>Micro-credit programs</li>
-                            <li>Entrepreneurship support</li>
+                            <li>
+                                <span class="en-text">Vocational training</span>
+                                <span class="ar-text" style="display: none;">تدريب مهني</span>
+                            </li>
+                            <li>
+                                <span class="en-text">Job placement assistance</span>
+                                <span class="ar-text" style="display: none;">مساعدة في التوظيف</span>
+                            </li>
+                            <li>
+                                <span class="en-text">Micro-credit programs</span>
+                                <span class="ar-text" style="display: none;">برامج التمويل الأصغر</span>
+                            </li>
+                            <li>
+                                <span class="en-text">Entrepreneurship support</span>
+                                <span class="ar-text" style="display: none;">دعم ريادة الأعمال</span>
+                            </li>
                         </ul>
                     </div>
                 </div>
@@ -647,63 +1051,156 @@
         </section>
         
         <section id="comparison" class="section">
-            <h1>Global Comparison: Tunisian Women vs. Women Worldwide</h1>
+            <h1>
+                <span class="en-text">Global Comparison: Tunisian Women vs. Women Worldwide</span>
+                <span class="ar-text" style="display: none;">مقارنة عالمية: المرأة التونسية مقابل النساء حول العالم</span>
+            </h1>
             
-            <p>This section compares the situation of Tunisian women with women from different regions around the world in terms of legal protections, social attitudes, and prevalence of violence.</p>
+            <p>
+                <span class="en-text">This section compares the situation of Tunisian women with women from different regions around the world in terms of legal protections, social attitudes, and prevalence of violence.</span>
+                <span class="ar-text" style="display: none;">تقارن هذه القسم وضع المرأة التونسية مع النساء من مناطق مختلفة حول العالم من حيث الحماية القانونية والمواقف الاجتماعية وانتشار العنف.</span>
+            </p>
             
             <table class="comparison-table">
                 <thead>
                     <tr>
-                        <th>Region/Country</th>
-                        <th>Legal Framework</th>
-                        <th>Prevalence of Violence</th>
-                        <th>Social Attitudes</th>
+                        <th>
+                            <span class="en-text">Region/Country</span>
+                            <span class="ar-text" style="display: none;">المنطقة/البلد</span>
+                        </th>
+                        <th>
+                            <span class="en-text">Legal Framework</span>
+                            <span class="ar-text" style="display: none;">الإطار القانوني</span>
+                        </th>
+                        <th>
+                            <span class="en-text">Prevalence of Violence</span>
+                            <span class="ar-text" style="display: none;">انتشار العنف</span>
+                        </th>
+                        <th>
+                            <span class="en-text">Social Attitudes</span>
+                            <span class="ar-text" style="display: none;">المواقف الاجتماعية</span>
+                        </th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td><strong>Tunisia</strong></td>
-                        <td>Progressive laws with comprehensive VAW legislation</td>
-                        <td>53% lifetime prevalence</td>
-                        <td>Mixed - progressive urban areas, conservative rural regions</td>
+                        <td><strong>
+                            <span class="en-text">Tunisia</span>
+                            <span class="ar-text" style="display: none;">تونس</span>
+                        </strong></td>
+                        <td>
+                            <span class="en-text">Progressive laws with comprehensive VAW legislation</span>
+                            <span class="ar-text" style="display: none;">قوانين تقدمية مع تشريع شامل للعنف ضد المرأة</span>
+                        </td>
+                        <td>
+                            <span class="en-text">53% lifetime prevalence</span>
+                            <span class="ar-text" style="display: none;">53% انتشار مدى الحياة</span>
+                        </td>
+                        <td>
+                            <span class="en-text">Mixed - progressive urban areas, conservative rural regions</span>
+                            <span class="ar-text" style="display: none;">مختلط - مناطق حضرية تقدمية، مناطق ريفية محافظة</span>
+                        </td>
                     </tr>
                     <tr>
-                        <td><strong>Scandinavian Countries</strong></td>
-                        <td>Strong legal protections, specialized courts</td>
-                        <td>22-30% lifetime prevalence</td>
-                        <td>Generally egalitarian with strong institutional support</td>
+                        <td><strong>
+                            <span class="en-text">Scandinavian Countries</span>
+                            <span class="ar-text" style="display: none;">الدول الاسكندنافية</span>
+                        </strong></td>
+                        <td>
+                            <span class="en-text">Strong legal protections, specialized courts</span>
+                            <span class="ar-text" style="display: none;">حماية قانونية قوية، محاكم متخصصة</span>
+                        </td>
+                        <td>
+                            <span class="en-text">22-30% lifetime prevalence</span>
+                            <span class="ar-text" style="display: none;">22-30% انتشار مدى الحياة</span>
+                        </td>
+                        <td>
+                            <span class="en-text">Generally egalitarian with strong institutional support</span>
+                            <span class="ar-text" style="display: none;">مساواة بشكل عام مع دعم مؤسسي قوي</span>
+                        </td>
                     </tr>
                     <tr>
-                        <td><strong>Other MENA Countries</strong></td>
-                        <td>Varies widely - Tunisia is regional leader</td>
-                        <td>30-70% lifetime prevalence</td>
-                        <td>Predominantly patriarchal with strong family codes</td>
+                        <td><strong>
+                            <span class="en-text">Other MENA Countries</span>
+                            <span class="ar-text" style="display: none;">دول الشرق الأوسط وشمال أفريقيا الأخرى</span>
+                        </strong></td>
+                        <td>
+                            <span class="en-text">Varies widely - Tunisia is regional leader</span>
+                            <span class="ar-text" style="display: none;">يختلف على نطاق واسع - تونس هي الرائدة إقليمياً</span>
+                        </td>
+                        <td>
+                            <span class="en-text">30-70% lifetime prevalence</span>
+                            <span class="ar-text" style="display: none;">30-70% انتشار مدى الحياة</span>
+                        </td>
+                        <td>
+                            <span class="en-text">Predominantly patriarchal with strong family codes</span>
+                            <span class="ar-text" style="display: none;">أبوية في الغالب مع قوانين أسرية قوية</span>
+                        </td>
                     </tr>
                     <tr>
-                        <td><strong>United States</strong></td>
-                        <td>VAWA provides framework, but implementation varies</td>
-                        <td>36% lifetime prevalence</td>
-                        <td>Mixed - progressive policies but persistent cultural issues</td>
+                        <td><strong>
+                            <span class="en-text">United States</span>
+                            <span class="ar-text" style="display: none;">الولايات المتحدة</span>
+                        </strong></td>
+                        <td>
+                            <span class="en-text">VAWA provides framework, but implementation varies</span>
+                            <span class="ar-text" style="display: none;">يوفر قانون العنف ضد المرأة الإطار، لكن التنفيذ يختلف</span>
+                        </td>
+                        <td>
+                            <span class="en-text">36% lifetime prevalence</span>
+                            <span class="ar-text" style="display: none;">36% انتشار مدى الحياة</span>
+                        </td>
+                        <td>
+                            <span class="en-text">Mixed - progressive policies but persistent cultural issues</span>
+                            <span class="ar-text" style="display: none;">مختلط - سياسات تقدمية لكن قضايا ثقافية مستمرة</span>
+                        </td>
                     </tr>
                     <tr>
-                        <td><strong>Sub-Saharan Africa</strong></td>
-                        <td>Weak legal frameworks in many countries</td>
-                        <td>Up to 65% lifetime prevalence in some regions</td>
-                        <td>Strong patriarchal traditions, limited institutional support</td>
+                        <td><strong>
+                            <span class="en-text">Sub-Saharan Africa</span>
+                            <span class="ar-text" style="display: none;">أفريقيا جنوب الصحراء</span>
+                        </strong></td>
+                        <td>
+                            <span class="en-text">Weak legal frameworks in many countries</span>
+                            <span class="ar-text" style="display: none;">أطر قانونية ضعيفة في العديد من البلدان</span>
+                        </td>
+                        <td>
+                            <span class="en-text">Up to 65% lifetime prevalence in some regions</span>
+                            <span class="ar-text" style="display: none;">حتى 65% انتشار مدى الحياة في بعض المناطق</span>
+                        </td>
+                        <td>
+                            <span class="en-text">Strong patriarchal traditions, limited institutional support</span>
+                            <span class="ar-text" style="display: none;">تقاليد أبوية قوية، دعم مؤسسي محدود</span>
+                        </td>
                     </tr>
                 </tbody>
             </table>
             
-            <h2>Key Observations</h2>
+            <h2>
+                <span class="en-text">Key Observations</span>
+                <span class="ar-text" style="display: none;">ملاحظات رئيسية</span>
+            </h2>
             
             <ul>
-                <li>Tunisia stands out in the MENA region for its progressive legislation on women's rights.</li>
+                <li>
+                    <span class="en-text">Tunisia stands out in the MENA region for its progressive legislation on women's rights.</span>
+                    <span class="ar-text" style="display: none;">تونس تبرز في منطقة الشرق الأوسط وشمال أفريقيا لتشريعاتها التقدمية في مجال حقوق المرأة.</span>
+                </li>
                 
-                <li>Despite strong laws, implementation gaps mean violence rates remain high compared to countries with similar legal frameworks.</li>
+                <li>
+                    <span class="en-text">Despite strong laws, implementation gaps mean violence rates remain high compared to countries with similar legal frameworks.</span>
+                    <span class="ar-text" style="display: none;">على الرغم من القوانين القوية، فإن فجوات التنفيذ تعني أن معدلات العنف تظل مرتفعة مقارنة بالدول ذات الأطر القانونية المماثلة.</span>
+                </li>
                 
-                <li>Cultural attitudes and economic factors significantly influence the effectiveness of legal protections.</li>
+                <li>
+                    <span class="en-text">Cultural attitudes and economic factors significantly influence the effectiveness of legal protections.</span>
+                    <span class="ar-text" style="display: none;">المواقف الثقافية والعوامل الاقتصادية تؤثر بشكل كبير على فعالية الحماية القانونية.</span>
+                </li>
                 
-                <li>Tunisia's approach combines legal reform with awareness campaigns, similar to strategies in Scandinavian countries.</li>
+                <li>
+                    <span class="en-text">Tunisia's approach combines legal reform with awareness campaigns, similar to strategies in Scandinavian countries.</span>
+                    <span class="ar-text" style="display: none;">يجمع نهج تونس بين الإصلاح القانوني وحملات التوعية، على غرار الاستراتيجيات في الدول الاسكندنافية.</span>
+                </li>
             </ul>
         </section>
     </main>
@@ -712,25 +1209,68 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-links">
-                    <a href="#">About</a>
-                    <a href="#">Resources</a>
-                    <a href="#">Get Help</a>
-                    <a href="#">Contact</a>
+                    <a href="#">
+                        <span class="en-text">About</span>
+                        <span class="ar-text" style="display: none;">حول</span>
+                    </a>
+                    <a href="#">
+                        <span class="en-text">Resources</span>
+                        <span class="ar-text" style="display: none;">موارد</span>
+                    </a>
+                    <a href="#">
+                        <span class="en-text">Get Help</span>
+                        <span class="ar-text" style="display: none;">احصل على المساعدة</span>
+                    </a>
+                    <a href="#">
+                        <span class="en-text">Contact</span>
+                        <span class="ar-text" style="display: none;">اتصل بنا</span>
+                    </a>
                 </div>
                 <div class="copyright">
-                    &copy; 2023 Tunisian Women's Rights Initiative. All rights reserved.
+                    <span class="en-text">&copy; 2023 Tunisian Women's Rights Initiative. All rights reserved.</span>
+                    <span class="ar-text" style="display: none;">&copy; 2023 مبادرة حقوق المرأة التونسية. جميع الحقوق محفوظة.</span>
                 </div>
             </div>
         </div>
     </footer>
     
     <script>
-        // Navigation functionality
+        // Language switching functionality
         document.addEventListener('DOMContentLoaded', function() {
+            const langButtons = document.querySelectorAll('.lang-btn');
+            const enTexts = document.querySelectorAll('.en-text');
+            const arTexts = document.querySelectorAll('.ar-text');
+            
+            // Navigation functionality
             const navLinks = document.querySelectorAll('.nav-link');
             const sections = document.querySelectorAll('.section');
             const heroBtn = document.querySelector('.btn');
             
+            // Language switching
+            langButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const lang = this.getAttribute('data-lang');
+                    
+                    // Update active button
+                    langButtons.forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Switch language
+                    if (lang === 'ar') {
+                        // Switch to Arabic
+                        enTexts.forEach(text => text.style.display = 'none');
+                        arTexts.forEach(text => text.style.display = 'inline');
+                        document.body.classList.add('rtl');
+                    } else {
+                        // Switch to English
+                        enTexts.forEach(text => text.style.display = 'inline');
+                        arTexts.forEach(text => text.style.display = 'none');
+                        document.body.classList.remove('rtl');
+                    }
+                });
+            });
+            
+            // Navigation
             navLinks.forEach(link => {
                 link.addEventListener('click', function(e) {
                     e.preventDefault();
